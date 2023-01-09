@@ -1,33 +1,34 @@
-import React, { useContext, useState } from 'react';
+import React, { useState,useContext,useEffect } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const Budget = () => {
-    // const [currency] = useState('');
-    const [action, setAction] = useState('');
+    const [currency, setCurrency] = useState('');
     const { dispatch } = useContext(AppContext);
 
-    // const customStyles = {           
-    //     control: (base, state) => ({
-    //         ...base,
-    //         backgroundColor: state.isSelected ? "white" : "#92E499"
-    //     })
-    // }
+    const handleChange = (event) => {
+        setCurrency(event.target.value);
+        changeCurrency()
+      };
 
-    if(action === "Dollar") {
+      const changeCurrency = () => {
         dispatch({
             type: 'CHG_CURRENCY',
-            payload: "$",
+            payload: currency,
         });
-    }
+      }
+
+   useEffect(() => {
+        console.log(currency);
+    }, [currency] )
 
     return (
         <div className="alert alert-secondary">
-        <select id="inputGroupSelect02" onChange={(event) => setAction(event.target.value)}>
+        <select id="inputGroupSelect02" onChange={handleChange}>
                 <option defaultValue>Currency</option>
-                <option value="Dollar" name="dollar">$ Dollar</option>
-                <option value="Pound" name="pound">£ Pound</option>
-                <option value="Euro" name="euro">€ Euro</option>
-                <option value="Ruppee" name="ruppee">₹ Ruppee</option>
+                <option value="$" name="dollar">$ Dollar</option>
+                <option value="£" name="pound">£ Pound</option>
+                <option value="€" name="euro">€ Euro</option>
+                <option value="₹" name="ruppee">₹ Ruppee</option>
                   </select>
                   </div>
     );

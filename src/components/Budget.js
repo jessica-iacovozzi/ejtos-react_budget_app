@@ -19,7 +19,7 @@ const Budget = () => {
         alert("You cannot reduce the budget value lower than the spending");
         return;
     }
-
+// console.log(currency)
     return (
         <div className='alert alert-secondary'>
             <span>Budget: {currency}</span>
