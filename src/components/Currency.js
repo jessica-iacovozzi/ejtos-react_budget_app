@@ -6,14 +6,14 @@ const Budget = () => {
     const [action, setAction] = useState('');
     const { dispatch } = useContext(AppContext);
 
-    const customStyles = {           
-        control: (base, state) => ({
-            ...base,
-            backgroundColor: state.isSelected ? "white" : "#92E499"
-        })
-    }
+    // const customStyles = {           
+    //     control: (base, state) => ({
+    //         ...base,
+    //         backgroundColor: state.isSelected ? "white" : "#92E499"
+    //     })
+    // }
 
-    if(action === "dollar") {
+    if(action === "Dollar") {
         dispatch({
             type: 'CHG_CURRENCY',
             payload: "$",
@@ -22,7 +22,7 @@ const Budget = () => {
 
     return (
         <div className="alert alert-secondary">
-        <select styles={customStyles} id="inputGroupSelect02" onChange={(event) => setAction(event.target.value)}>
+        <select id="inputGroupSelect02" onChange={(event) => setAction(event.target.value)}>
                 <option defaultValue>Currency</option>
                 <option value="Dollar" name="dollar">$ Dollar</option>
                 <option value="Pound" name="pound">£ Pound</option>
